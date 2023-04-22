@@ -60,4 +60,4 @@ Please have in mind that you are responsable for adding your typedoc directory t
 It is also possible to disable this plugin for a single project. For that, create .notypedoc file in the project root directory.
 
 ## Credits
-This project started as a hack of [vim-doxygen](https://github.com/Zeioth/vim-doxygen), which is a hack of [vim-guttentags](https://github.com/ludovicchabant/vim-gutentags). We use its boiler plate functions to manage directories in vimscript with good compatibility across operative systems. So please support its author too if you can!
+This project started as a hack of [vim-doxygen](https://github.com/Zeioth/vim-doxygen), which started as a hack of [vim-guttentags](https://github.com/ludovicchabant/vim-gutentags). We use its boiler plate functions to manage directories in vimscript with good compatibility across operative systems. So please support its author too if you can!
