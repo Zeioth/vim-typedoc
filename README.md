@@ -57,7 +57,7 @@ g:typedoc_project_root = ['.git', '.hg', '.svn', '.bzr', '_darcs', '_FOSSIL_', '
 
 ## Final notes
 
-Please, note that even though g:typedoc_auto_setup will setup typedoc for you, you are still responsable for adding your typedoc directory to the .gitignore if you don't want it to be pushed by accident.
+Please have in mind that you are responsable for adding your typedoc directory to the .gitignore if you don't want it to be pushed by accident.
 
 It is also possible to disable this plugin for a single project. For that, create .notypedoc file in the project root directory.
 
