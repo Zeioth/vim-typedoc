@@ -133,8 +133,9 @@ g:typedoc_project_root
                         automatically. To do this, it looks for "root markers"
                         in the current file's directory and its parent
                         directories. If it finds any of those markers,
-                        typedoc will be enabled for the project, and a
-                        doxyfile directory will be created at the project root.
+                        typedoc will be enabled for the project. This is
+                        important because by default, this plugin will use the
+                        project's root directory to run typedoc.
 
                         The default markers are:
                         `['.git', '.hg', '.svn', '.bzr', '_darcs', '_darcs', '_FOSSIL_', '.fslckout']`
@@ -261,17 +262,9 @@ g:typedoc_cmd
                         This is the command that typedoc uses to generate the
                         project documentation.
 
-                        Be careful if you change it:
-                        By general rule, it is important to
-                        cd to the directory where the doxyfile lives.
-
-                        This is because the paths defined in the doxyfile are
-                        relative to the directory where the typedoc command is
-                        executed from.
-
                         Please, take the default value of this global as reference.
 
-                        Defaults to "cd ./typedoc && typedoc ./Doxyfile".
+                        Defaults to "typedoc".
 
 
                                             *typedoc_browser_cmd*
@@ -289,7 +282,7 @@ g:typedoc_browser_file
                         The file that will be opened by the command
                         |typedocOpen|.
 
-                        Defaults to "/typedoc/html/index.html".
+                        Defaults to "./docs/index.html".
 
                                             *typedoc_verbose_manual_regen*
 g:typedoc_verbose_manual_regen
