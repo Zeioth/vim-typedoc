@@ -64,8 +64,6 @@ let g:typedoc_define_advanced_commands = get(g:, 'typedoc_define_advanced_comman
 
 " Globals - The important stuff {{{
 
-let g:typedoc_auto_setup = get(g:, 'typedoc_auto_setup', 1)
-
 " typedoc - Auto regen
 let g:typedoc_auto_regen = get(g:, 'typedoc_auto_regen', 1)
 let g:typedoc_cmd = get(g:, 'typedoc_cmd', 'typedoc')
