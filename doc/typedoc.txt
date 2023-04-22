@@ -1,0 +1,324 @@
+*typedoc.txt*  Automatic typedoc management for VIM
+
+
+ ____o__ __o____                                  o__ __o
+  /   \   /   \                                  <|     v\
+       \o/                                       / \     <\
+        |        o      o  \o_ __o     o__  __o  \o/       \o   o__ __o       __o__
+       < >      <|>    <|>  |    v\   /v      |>  |         |> /v     v\     />  \
+        |       < >    < > / \    <\ />      //  / \       // />       <\  o/
+        o        \o    o/  \o/     / \o    o/    \o/      /   \         / <|
+       <|         v\  /v    |     o   v\  /v __o  |      o     o       o   \\
+       / \         <\/>    / \ __/>    <\/> __/> / \  __/>     <\__ __/>    _\o__</
+                    /      \o/
+                   o        |
+                __/>       / \
+
+
+                typedoc REFERENCE MANUAL
+                    by Adrian Lopez
+
+                                                *typedoc*
+
+1. Introduction             |typedoc-intro|
+2. Commands                 |typedoc-commands|
+3. Global Settings          |typedoc-settings|
+4. Project Settings         |typedoc-project-settings|
+
+=============================================================================
+1. Introduction                                 *typedoc-intro*
+
+vim-typedoc is a plugin that takes care of the management of typedoc
+documentation in Vim. It will (re)generate typedoc documentation as you work
+while staying completely out of your way.
+
+In order to generate documentation, typedoc will have to figure out what's in
+your project. To do this, it will locate well-known project root markers like
+SCM folders (.git, .hg, etc.), any custom markers you define (with
+|typedoc_project_root|).
+
+
+=============================================================================
+2. Commands                                     *typedoc-commands*
+
+                                                *typedoc-project-commands*
+The following commands are only available in buffers that have been found to
+belong to a project that should be managed by typedoc. See
+|typedoc_project_root| for how typedoc figures out the project a file
+belongs to. When no project is found (i.e. the file is not under any of the
+known project markers), typedoc is disabled for that buffer, and the
+following commands and remarks don't apply.
+
+If you want to force-disable typedoc for a given project even though it does
+match one of the items in |typedoc_project_root|, create a file named
+"`.notypedoc`" at the root of the project.
+
+                                                *:typedocRegen*
+:typedocRegen
+                        Manually (re)generate the typedoc documentation.
+                        This can be useful when |typedoc_auto_regen| is set to
+                        0.
+
+
+
+Some debugging/troubleshooting commands are also available if the
+|typedoc_define_advanced_commands| global setting is set to 1.
+
+:typedocOpen
+                        Opens the documentation file on the browser. Both the
+                        file and the browser can be customized with
+                        |typedoc_browser_file| and |typedoc_browser_cmd|.
+
+
+
+
+Some debugging/troubleshooting commands are also available if the
+|typedoc_define_advanced_commands| global setting is set to 1.
+
+
+                                                *:typedocToggleEnabled*
+:typedocToggleEnabled
+                        Disables and re-enables typedoc.
+                        When typedoc is disabled, it won't (re)generate
+                        typedoc when you save a buffer. It will however still
+                        look for project markers as you open new buffers so
+                        that they can start working again when you re-enable
+                        typedoc.
+
+                        {only available when
+                        |typedoc_define_advanced_commands| is set}
+
+                                                *typedocToggleTrace*
+:typedocToggleTrace
+                        If you want to keep an eye on what typedoc is doing,
+                        you can enable tracing. This will show messages every
+                        time typedoc does something. It can get annoying
+                        quickly, since it will require you to press a key to
+                        dismiss those messages, but it can be useful to
+                        troubleshoot a problem.
+
+                        {only available when
+                        |typedoc_define_advanced_commands| is set}
+
+
+=============================================================================
+3. Global Settings                              *typedoc-settings*
+
+The following settings can be defined in your |vimrc| to change the default
+behaviour of typedoc.
+
+                                                *typedoc_enabled*
+g:typedoc_enabled
+                        Defines whether typedoc should be enabled. When
+                        disabled, typedoc will still scan for project root
+                        markers when opening buffers. This is so that when you
+                        re-enable typedoc, you won't have some buffers
+                        mysteriously working while others (those open last)
+                        don't.
+
+                        Defaults to `1`.
+
+                                                *typedoc_trace*
+g:typedoc_trace
+                        When true, typedoc will spit out debugging
+                        information as Vim messages (which you can later read
+                        with |:messages|).
+
+                        Defaults to `0`.
+
+                                                *typedoc_project_root*
+g:typedoc_project_root
+                        When a buffer is loaded, typedoc will figure out if
+                        it's part of a project that should have typedoc managed
+                        automatically. To do this, it looks for "root markers"
+                        in the current file's directory and its parent
+                        directories. If it finds any of those markers,
+                        typedoc will be enabled for the project, and a
+                        doxyfile directory will be created at the project root.
+
+                        The default markers are:
+                        `['.git', '.hg', '.svn', '.bzr', '_darcs', '_darcs', '_FOSSIL_', '.fslckout']`
+
+
+                                                *typedoc_exclude_filetypes*
+g:typedoc_exclude_filetypes
+                        A |List| of file types (see |'filetype'|) that typedoc
+                        should ignore. When a buffer is opened, if its
+                        'filetype' is found in this list, typedoc features
+                        won't be available for this buffer.
+                        Defaults to an empty list (`[]`).
+
+                                                *typedoc_exclude_project_root*
+g:typedoc_exclude_project_root
+                        A list of project roots to generally ignore. If a file
+                        is opened inside one of those projects, typedoc
+                        won't be activated. This is similar to placing
+                        a `.notypedoc` file in the root of those projects, but
+                        can be useful when you don't want to, or can't, place
+                        such a file there.
+                        Defaults to `['/usr/local', '/opt/homebrew', '/home/linuxbrew/.linuxbrew']`,
+                        which are the folders where Homebrew is known to
+                        create a Git repository by default.
+
+                                                *typedoc_project_root_finder*
+g:typedoc_project_root_finder
+                        When a buffer is loaded, typedoc uses a default
+                        (internal) implementation to find that file's
+                        project's root directory, using settings like
+                        |g:typedoc_project_root|. When you specify
+                        |g:typedoc_project_root_finder|, you can tell
+                        typedoc to use a custom implementation, such as
+                        `vim-projectroot`. The value of this setting must be
+                        the name of a function that takes a single string
+                        argument (the path to the current buffer's file) and
+                        returns a string value (the project's root directory).
+                        Defaults to `''`.
+                        Note: when set, the called implementation will
+                        possibly ignore |g:typedoc_project_root|.
+                        Note: an implementation can fallback to the default
+                        behaviour by calling
+                        `typedoc#default_get_project_root`.
+
+                                                *typedoc_generate_on_new*
+g:typedoc_generate_on_new
+                        If set to 1, typedoc will start generating the docs
+                        when a new project is open. A new project is
+                        considered open when a buffer is created for a file
+                        that has not been "seen" yet
+                        in the current Vim session -- which pretty much means
+                        when you open the first file in a given source control
+                        repository.
+                        When set to 0, typedoc won't do anything special.
+
+                        Defaults to 1.
+
+                                                *typedoc_generate_on_write*
+g:typedoc_generate_on_write
+                        If set to 1, typedoc will (re)generate typedoc
+                        documentation when a file inside that project is
+                        saved. See |typedoc_project_root| for how typedoc
+                        locates the project.
+                        When set to 0, typedoc won't do anything on save.
+                        This means that the docs won't reflect
+                        the latest changes, and you will have to run
+                        |typedocUpdate| manually.
+                        Defaults to 1.
+
+                                            *typedoc_generate_on_empty_buffer*
+g:typedoc_generate_on_empty_buffer
+                        If set to 1, typedoc will start generating the typedoc
+                        documentation even if there's no buffer currently open,
+                        as long as the current working directory (as returned by
+                        |:cd|) is inside a known project.
+                        This is useful if you want typedoc to generate the
+                        docs right after opening Vim.
+
+                        Defaults to 0.
+
+                                            *typedoc_resolve_symlinks*
+g:typedoc_resolve_symlinks
+                        When set to 1, typedoc will resolve any symlinks in
+                        the current buffer's path in order to find the project
+                        it belongs to. This is what you want if you're editing
+                        a symlink located outside of the project, and it
+                        points to a file inside the project. However, this is
+                        maybe not what you want if the symlink itself is
+                        part of the project.
+                        Defaults to 0.
+
+                                            *typedoc_init_user_func*
+g:typedoc_init_user_func
+                        When set to a non-empty string, it is expected to be
+                        the name of a function that will be called when a file
+                        is opened in a project. The function gets passed the
+                        path of the file and if it returns 0, typedoc won't
+                        be enabled for that file.
+
+                        You can use this to manually set buffer-local
+                        settings:
+
+                        Defaults to "".
+
+                                            *typedoc_define_advanced_commands*
+g:typedoc_define_advanced_commands
+                        Defines some advanced commands like
+                        |typedocToggleEnabled|.
+
+
+                                            *typedoc_auto_regen*
+g:typedoc_auto_regen
+                        When setted to 1, typedoc will automatically generate
+                        the documentation for you.
+
+                        If you prefer to generate the docs manually, you can
+                        use the command |typedocRegen|. In this case you might want
+                        to set this this global to 0.
+
+                        Defaults to 1.
+
+                                            *typedoc_cmd*
+g:typedoc_cmd
+                        This is the command that typedoc uses to generate the
+                        project documentation.
+
+                        Be careful if you change it:
+                        By general rule, it is important to
+                        cd to the directory where the doxyfile lives.
+
+                        This is because the paths defined in the doxyfile are
+                        relative to the directory where the typedoc command is
+                        executed from.
+
+                        Please, take the default value of this global as reference.
+
+                        Defaults to "cd ./typedoc && typedoc ./Doxyfile".
+
+
+                                            *typedoc_browser_cmd*
+g:typedoc_browser_cmd
+                        It is the program that will be used to open
+                        |typedoc_browser_file|.
+
+                        This can be your internet browser, or anything else,
+                        really.
+
+                        Defaults to "xdg-open".
+
+                                            *typedoc_browser_file*
+g:typedoc_browser_file
+                        The file that will be opened by the command
+                        |typedocOpen|.
+
+                        Defaults to "/typedoc/html/index.html".
+
+                                            *typedoc_verbose_manual_regen*
+g:typedoc_verbose_manual_regen
+                        Display a message on the status bar when typedoc is
+                        manually regenerated using the command :|typedocRegen|.
+                        Normally, used through a keybinding.
+
+                        Defaults to "1".
+
+
+                                            *typedoc_verbose_open*
+g:typedoc_verbose_open
+                        Display a message on the status bar when the typedoc
+                        documentation is opened on the browser using the
+                        command :|typedocOpen|. Normally, used
+                        through a keybinding.
+
+                        Defaults to "1".
+
+
+=============================================================================
+4. Project Settings                             *typedoc-project-settings*
+
+typedoc can be customized to some extent on a per-project basis with the
+following files present in the project root directory:
+
+                                                *typedoc-.notypedoc*
+`.notypedoc`: if this file exists, typedoc will be disabled completely for that
+project.
+
+
+ vim:tw=78:et:ft=help:norl:
