@@ -35,7 +35,6 @@ Enable automated doc generation on save (optional)
 ```
 let g:typedoc_auto_regen = 1
 
-
 " typedoc - Open on browser
 let g:typedoc_browser_cmd = get(g:, 'typedoc_browser_cmd', 'xdg-open')
 let g:typedoc_browser_file = get(g:, 'typedoc_browser_file', './docs/index.html')
@@ -45,7 +44,6 @@ Custom command to generate the typedoc documentation (optional)
 
 ```
 let g:typedoc_cmd = get(g:, 'typedoc_cmd', 'typedoc')
-
 ```
 
 Change the way the root of the project is detected (optional)
