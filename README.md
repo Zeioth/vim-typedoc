@@ -1,11 +1,11 @@
 # vim-typedoc
-Out of the box, this plugin automatically regenerates yous typedoc
+Out of the box, this plugin automatically regenerates your typedoc
 documentation.
 
 ## Dependencies
 ```sh
 # For this to work, you must install typedoc like
- udo npm -g typedoc
+sudo npm -g typedoc
 ```
 
 You also need to have this on the tsconfig.json
