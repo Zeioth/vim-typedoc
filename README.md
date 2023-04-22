@@ -8,7 +8,7 @@ documentation. Currently, this plugin is in highly experimental state.
 sudo npm -g typedoc
 ```
 
-You also need to have this on the tsconfig.json
+You also need to have this on your project tsconfig.json
 ```typescript
 {
   "typedocOptions": {
