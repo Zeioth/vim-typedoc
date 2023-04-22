@@ -1,6 +1,6 @@
 # vim-typedoc
 Out of the box, this plugin automatically regenerates your typedoc
-documentation.
+documentation. Currently, in highly experimental state.
 
 ## Dependencies
 ```sh
