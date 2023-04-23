@@ -8,7 +8,7 @@ documentation. Currently, this plugin is in highly experimental state.
 sudo npm -g typedoc
 ```
 
-You also need to have this on the tsconfig.json
+You also need to have this on your project tsconfig.json
 ```typescript
 {
   "typedocOptions": {
@@ -50,7 +50,7 @@ Change the way the root of the project is detected (optional)
 
 ```
 " By default, we detect the root of the project where the first .git file is found
-g:typedoc_project_root = ['.git', '.hg', '.svn', '.bzr', '_darcs', '_FOSSIL_', '.fslckout']
+let g:typedoc_project_root = ['.git', '.hg', '.svn', '.bzr', '_darcs', '_FOSSIL_', '.fslckout']
 ```
 
 ## Final notes
@@ -60,4 +60,4 @@ Please have in mind that you are responsable for adding your typedoc directory t
 It is also possible to disable this plugin for a single project. For that, create .notypedoc file in the project root directory.
 
 ## Credits
-This project started as a hack of [vim-doxygen](https://github.com/Zeioth/vim-doxygen), which is a hack of [vim-guttentags](https://github.com/ludovicchabant/vim-gutentags). We use its boiler plate functions to manage directories in vimscript with good compatibility across operative systems. So please support its author too if you can!
+This project started as a hack of [vim-doxygen](https://github.com/Zeioth/vim-doxygen), which started as a hack of [vim-guttentags](https://github.com/ludovicchabant/vim-gutentags). We use its boiler plate functions to manage directories in vimscript with good compatibility across operative systems. So please support its author too if you can!
