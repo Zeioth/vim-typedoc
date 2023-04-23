@@ -22,7 +22,7 @@ You also need to have this on your project tsconfig.json
 Please use <:h typedoc> on vim to read the [full documentation](https://github.com/Zeioth/vim-typedoc/blob/main/doc/typedoc.txt).
 
 ## How to use
-Copy this in your vimconfig
+Copy this in your vimconfig:
 
 ```
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
