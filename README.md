@@ -41,7 +41,7 @@ augroup typedoc_mappings
 augroup END
 ```
 
-## Most common options to configure
+## Most frecuent options users customize
 
 Enable automated doc generation on save (optional)
 ```
