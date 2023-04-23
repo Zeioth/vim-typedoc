@@ -29,7 +29,7 @@ Copy this in your vimconfig:
 " => vim typedoc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Enable for the next languages
+" Enable it for the next languages
 let g:typedoc_include_filetypes = ['typescript']
 
 " Enable the keybindings for the languages in g:typedoc_include_filetypes
