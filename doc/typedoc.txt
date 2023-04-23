@@ -140,14 +140,17 @@ g:typedoc_project_root
                         The default markers are:
                         `['.git', '.hg', '.svn', '.bzr', '_darcs', '_darcs', '_FOSSIL_', '.fslckout']`
 
-
-                                                *typedoc_exclude_filetypes*
-g:typedoc_exclude_filetypes
+                                                *typedoc_include_filetypes*
+g:typedoc_include_filetypes
                         A |List| of file types (see |'filetype'|) that typedoc
-                        should ignore. When a buffer is opened, if its
+                        should use. When a buffer is opened, if its
                         'filetype' is found in this list, typedoc features
-                        won't be available for this buffer.
-                        Defaults to an empty list (`[]`).
+                        will be available for this buffer.
+
+                        Defaults to typedoc officially supported languages:
+                        (`['typescript']`).
+
+
 
                                                 *typedoc_exclude_project_root*
 g:typedoc_exclude_project_root

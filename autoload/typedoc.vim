@@ -161,9 +161,8 @@ function! typedoc#setup_typedoc() abort
         return
     endif
 
-    " Don't setup typedoc for things that don't need it, or that could
-    " cause problems.
-    if index(g:typedoc_exclude_filetypes, &filetype) >= 0
+    " We only want to use vim-typedoc in the filetypes supported by typedoc
+    if !index(g:doxygen_include_filetypes, &filetype) >= 0
         return
     endif
 
@@ -245,7 +244,7 @@ function! s:manual_typedoc_regen(bufno) abort
       endif
 
       " Run async
-      let job = job_start('call s:update_typedoc(' . a:bufno . ', 0, 2 . )')
+      call s:update_typedoc(a:bufno , 0, 2)
     endif
 endfunction
 
@@ -259,7 +258,7 @@ function! s:typedoc_open() abort
         if g:typedoc_verbose_open == 1
           echo g:typedoc_browser_cmd . ' ' . l:proj_dir . g:typedoc_browser_file
         endif
-        let job = job_start('call system(' . g:typedoc_browser_cmd . ' ' . l:proj_dir . g:typedoc_browser_file . ')')
+        call system(g:typedoc_browser_cmd . ' ' . l:proj_dir . g:typedoc_browser_file)
     endtry
 endfunction
 
@@ -292,7 +291,7 @@ function! s:update_typedoc(bufno, write_mode, queue_mode) abort
         
         " Generate the typedoc docs where specified.
         if g:typedoc_auto_regen == 1
-          let job = job_start('call system(' . g:typedoc_cmd . ')')
+          call system(g:typedoc_cmd)
         endif       
 
     catch /^typedoc\:/

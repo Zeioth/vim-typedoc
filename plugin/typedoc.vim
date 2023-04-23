@@ -45,7 +45,7 @@ let g:typedoc_project_root_finder = get(g:, 'typedoc_project_root_finder', '')
 let g:typedoc_exclude_project_root = get(g:, 'typedoc_exclude_project_root', 
             \['/usr/local', '/opt/homebrew', '/home/linuxbrew/.linuxbrew'])
 
-let g:typedoc_exclude_filetypes = get(g:, 'typedoc_exclude_filetypes', [])
+let g:typedoc_include_filetypes = get(g:, 'typedoc_include_filetypes', ['typescript'])
 let g:typedoc_resolve_symlinks = get(g:, 'typedoc_resolve_symlinks', 0)
 let g:typedoc_generate_on_new = get(g:, 'typedoc_generate_on_new', 1)
 let g:typedoc_generate_on_write = get(g:, 'typedoc_generate_on_write', 1)
