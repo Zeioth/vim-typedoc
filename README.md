@@ -49,7 +49,7 @@ Enable automated doc generation on save (optional)
 let g:typedoc_auto_regen = 1
 ```
 
-Change the way the documentation ir opened
+Change the way the documentation ir opened (optional)
 ```
 " typedoc - Open on browser
 let g:typedoc_browser_cmd = get(g:, 'typedoc_browser_cmd', 'xdg-open')
