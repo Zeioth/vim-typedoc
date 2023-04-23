@@ -258,7 +258,7 @@ function! s:typedoc_open() abort
         if g:typedoc_verbose_open == 1
           echo g:typedoc_browser_cmd . ' ' . l:proj_dir . g:typedoc_browser_file
         endif
-        call system(g:typedoc_browser_cmd . ' ' . l:proj_dir . g:typedoc_browser_file)
+        call job_start(['sh', '-c', g:doxygen_browser_cmd . ' ' . l:proj_dir . g:doxygen_browser_file], {})
     endtry
 endfunction
 
@@ -291,7 +291,8 @@ function! s:update_typedoc(bufno, write_mode, queue_mode) abort
         
         " Generate the typedoc docs where specified.
         if g:typedoc_auto_regen == 1
-          call system(g:typedoc_cmd)
+          call job_start(['sh', '-c', g:typedoc_cmd], {})
+
         endif       
 
     catch /^typedoc\:/
