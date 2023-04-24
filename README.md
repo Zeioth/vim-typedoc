@@ -22,19 +22,35 @@ You also need to have this on your project tsconfig.json
 Please use <:h typedoc> on vim to read the [full documentation](https://github.com/Zeioth/vim-typedoc/blob/main/doc/typedoc.txt).
 
 ## How to use
-
-You just need to define the next keybindings (you MUST setup this)
+Copy this in your vimconfig:
 
 ```
-" Shortcuts to open and generate docs
-nmap <silent> <C-k> :<C-u>TypedocRegen<CR>
-nmap <silent> <C-h> :<C-u>TypedocOpen<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim typedoc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Enable it for the next languages
+let g:typedoc_include_filetypes = ['typescript']
+
+" Enable the keybindings for the languages in g:typedoc_include_filetypes
+augroup typedoc_mappings
+  for ft in g:typedoc_include_filetypes
+    execute 'autocmd FileType ' . ft . ' nnoremap <buffer> <C-h> :<C-u>TypedocOpen<CR>'
+    "execute 'autocmd FileType ' . ft . ' nnoremap <buffer> <C-k> :<C-u>TypedocRegen<CR>'
+  endfor
+augroup END
 ```
+
+## Most frecuent options users customize
 
 Enable automated doc generation on save (optional)
 ```
+" Enabled by default for the languages defined in g:typedoc_include_filetypes
 let g:typedoc_auto_regen = 1
+```
 
+Change the way the documentation is opened (optional)
+```
 " typedoc - Open on browser
 let g:typedoc_browser_cmd = get(g:, 'typedoc_browser_cmd', 'xdg-open')
 let g:typedoc_browser_file = get(g:, 'typedoc_browser_file', './docs/index.html')
@@ -43,7 +59,7 @@ let g:typedoc_browser_file = get(g:, 'typedoc_browser_file', './docs/index.html'
 Custom command to generate the typedoc documentation (optional)
 
 ```
-let g:typedoc_cmd = get(g:, 'typedoc_cmd', 'typedoc')
+let g:typedoc_cmd = 'typedoc'
 ```
 
 Change the way the root of the project is detected (optional)
