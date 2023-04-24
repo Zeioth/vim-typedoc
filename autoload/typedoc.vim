@@ -217,8 +217,8 @@ function! typedoc#setup_typedoc() abort
     execute 'augroup end'
 
     " Miscellaneous commands.
-    command! -buffer -bang typedocRegen :call s:manual_typedoc_regen(<bang>0)
-    command! -buffer -bang typedocOpen :call s:typedoc_open()
+    command! -buffer -bang TypedocRegen :call s:manual_typedoc_regen(<bang>0)
+    command! -buffer -bang TypedocOpen :call s:typedoc_open()
 
     " Keybindings
     "nmap <silent> <C-k> :<C-u>typedocRegen<CR>
