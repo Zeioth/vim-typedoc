@@ -279,10 +279,10 @@ function! s:update_typedoc(bufno, write_mode, queue_mode) abort
     let l:prev_cwd = getcwd()
     call typedoc#chdir(l:proj_dir)
     try
-        " If the typedoc.json exist already, don't override it.
-        l:typedoc_exists = 0 
+        " If the typedoc exist already, don't override it.
+        let l:typedoc_exists = 0
         if filereadable('./typedoc.json')
-          l:typedoc_exists = 1
+          let l:typedoc_exists = 1
         endif
 
         " Clone the typedoc config into the project where specified.
