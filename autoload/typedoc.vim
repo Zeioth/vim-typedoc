@@ -279,8 +279,14 @@ function! s:update_typedoc(bufno, write_mode, queue_mode) abort
     let l:prev_cwd = getcwd()
     call typedoc#chdir(l:proj_dir)
     try
+        " If the typedoc exist already, don't override it.
+        l:typedoc_exists = 0 
+        if filereadable('./typedoc.json')
+          l:typedoc_exists = 1
+        endif
+
         " Clone the typedoc config into the project where specified.
-        if g:typedoc_auto_setup == 1
+        if g:typedoc_auto_setup == 1 && l:typedoc_exists == 0
           if g:typedoc_local_mode == 1
             call job_start(['sh', '-c', g:typedoc_local_cmd], {})
           else
