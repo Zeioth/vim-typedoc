@@ -8,16 +8,6 @@ documentation. Currently, this plugin is in highly experimental state.
 sudo npm -g typedoc
 ```
 
-You also need to have this on your project tsconfig.json
-```typescript
-{
-  "typedocOptions": {
-    "entryPoints": './index.ts',
-    "out": 'docs'
-  }
-}
-```
-
 ## Documentation
 Please use <:h typedoc> on vim to read the [full documentation](https://github.com/Zeioth/vim-typedoc/blob/main/doc/typedoc.txt).
 
