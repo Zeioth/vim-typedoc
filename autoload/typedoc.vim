@@ -194,9 +194,6 @@ function! typedoc#setup_typedoc() abort
         endif
 
         let b:typedoc_files = {}
-        " for module in g:typedoc_modules
-        "     call call("typedoc#".module."#init", [b:typedoc_root])
-        " endfor
     catch /^typedoc\:/
         call typedoc#trace("No typedoc support for this buffer.")
         return
