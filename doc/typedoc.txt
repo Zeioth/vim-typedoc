@@ -255,6 +255,9 @@ g:typedoc_auto_setup
                         into the project's root directory. Specifically, on the
                         subdirectory defined on |typedoc_clone_destiny_dir|.
 
+                        If a typedoc.json file exist already, it won't be
+                        overrided.
+
                         Please, note that even though |typedoc_auto_setup|
                         will setup typedoc.json for you, you are still responsable
                         for adding your typedoc.json file to the .gitignore
