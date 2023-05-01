@@ -44,9 +44,9 @@ let g:typedoc_clone_config_repo = 'https://github.com/Zeioth/typedoc-vim-templat
 let g:typedoc_clone_destiny_dir = './typedoc'
 let g:typedoc_clone_cmd = 'git clone'
 
-" IMPORTANT: The default typedoc.json we create assum the entry point is ./src/main.js
-"            This is the default for angular projects but if your project has a different 
-"            entry point, please edit typedoc.json
+" IMPORTANT: The default typedoc.json we create assumes the entry point of the program is './src/main.js'.
+"            This is the default entry point for angular projects, but if your project has a different 
+"            entry point, you will have to manually edit './typedoc.json'.
 ```
 
 Enable automated doc generation on save (optional)
