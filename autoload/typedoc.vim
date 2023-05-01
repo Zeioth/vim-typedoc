@@ -162,7 +162,7 @@ function! typedoc#setup_typedoc() abort
     endif
 
     " We only want to use vim-typedoc in the filetypes supported by typedoc
-    if !index(g:doxygen_include_filetypes, &filetype) >= 0
+    if index(g:typedoc_include_filetypes, &filetype) == -1
         return
     endif
 
@@ -219,12 +219,6 @@ function! typedoc#setup_typedoc() abort
     " Miscellaneous commands.
     command! -buffer -bang TypedocRegen :call s:manual_typedoc_regen(<bang>0)
     command! -buffer -bang TypedocOpen :call s:typedoc_open()
-
-    " Keybindings
-    "nmap <silent> <C-k> :<C-u>typedocRegen<CR>
-    "nmap <silent> <C-h> :<C-u>typedocOpen<CR>
-    nmap <silent> g:typedoc_shortcut_regen . :<C-u>typedocRegen<CR>
-    nmap <silent> g:typedoc_shortcut_open . :<C-u>typedocOpen<CR>
 
 endfunction
 
