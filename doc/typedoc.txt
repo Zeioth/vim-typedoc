@@ -249,6 +249,73 @@ g:typedoc_define_advanced_commands
                         |typedocToggleEnabled|.
 
 
+                                            *typedoc_auto_setup*
+g:typedoc_auto_setup
+                        When set to 1, it will clone |typedoc_clone_config_repo|
+                        into the project's root directory. Specifically, on the
+                        subdirectory defined on |typedoc_clone_destiny_dir|.
+
+                        Please, note that even though |typedoc_auto_setup|
+                        will setup typedoc.json for you, you are still responsable
+                        for adding your typedoc.json file to the .gitignore
+                        in case you don't want it to be pushed to git by
+                        accident.
+
+                        Defaults to 1.
+
+                                            *typedoc_clone_config_repo*
+g:typedoc_clone_config_repo
+                        When using this plugin, typedoc.json is never generated
+                        locally. Instead it is downloaded from a
+                        repository. This way makes easy to use a
+                        customized typedoc.
+
+                        The default repository is meant for testing purposes
+                        only and it is strongly encouraged for users to fork
+                        and customize. This improves security too.
+
+                        Defaults to "https://github.com/Zeioth/typedoc-vim-template.git".
+
+
+                                            *typedoc_clone_cmd*
+g:typedoc_clone_cmd
+                        This global variable can be handy for users who prefer
+                        not using git.
+
+                        Defaults to "git clone".
+
+                                            *typedoc_clone_destiny_dir*
+g:typedoc_clone_destiny_dir
+                        Where to clone the repository from the
+                        projec's root directory.
+
+                        Defaults to "./typedoc".
+
+                                            *typedoc_local_mode*
+g:typedoc_local_mode
+                        When its value is 1, vim-typedoc will use |typedoc_local_cmd|
+                        to create the doxigen directory instead of cloning it
+                        from a repository.
+
+                        Defaults to 0.
+
+                                            *typedoc_local_cmd*
+g:typedoc_local_cmd
+                        Command to run to create the typedoc directory when
+                        |typedoc_local_mode| is enabled.
+
+                        Defaults to "touch ./typedoc.json".
+
+                                            *typedoc_clone_post_cmd*
+g:typedoc_clone_post_cmd
+                        Command to execute after the config repository is
+                        cloned. By default we just want to delete the .git
+                        directory after cloning, but this command is
+                        customizable.
+
+                        Defaults to:
+                        '&& cp ' . g:typedoc_clone_destiny_dir . '/typedoc.json ./typedoc.json  && rm -rf ' . g:typedoc_clone_destiny_dir'
+
                                             *typedoc_auto_regen*
 g:typedoc_auto_regen
                         When setted to 1, typedoc will automatically generate

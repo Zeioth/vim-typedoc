@@ -282,11 +282,20 @@ function! s:update_typedoc(bufno, write_mode, queue_mode) abort
     let l:prev_cwd = getcwd()
     call typedoc#chdir(l:proj_dir)
     try
-        
+        " Clone the typedoc config into the project where specified.
+        if g:typedoc_auto_setup == 1
+          if g:typedoc_local_mode == 1
+            call job_start(['sh', '-c', g:typedoc_local_cmd], {})
+          else
+            let g:typedoc_clone_template_cmd = g:typedoc_clone_cmd . " " . g:typedoc_clone_config_repo . " " . g:typedoc_clone_destiny_dir . " " . g:typedoc_clone_post_cmd
+            echo g:typedoc_clone_template_cmd
+            call job_start(['sh', '-c', g:typedoc_clone_template_cmd], {})
+          endif
+        endif       
+
         " Generate the typedoc docs where specified.
         if g:typedoc_auto_regen == 1
           call job_start(['sh', '-c', g:typedoc_cmd], {})
-
         endif       
 
     catch /^typedoc\:/
