@@ -43,6 +43,18 @@ augroup END
 
 ## Most frecuent options users customize
 
+Enable automated typedoc.json file generation (optional)
+```
+" Clone a default typedoc.json file into the project (ENABLED BY DEFAULT)
+" Check the template here: https://github.com/Zeioth/vim-doxygen-template
+g:typedoc_auto_setup = 1
+
+" OPTIONAL: You can provide a custom typedoc.json.
+let g:doxygen_clone_config_repo = 'https://github.com/Zeioth/doxygenvim-template.git'
+let g:doxygen_clone_destiny_dir = './typedoc'
+let g:doxygen_clone_cmd = 'git clone'
+```
+
 Enable automated doc generation on save (optional)
 ```
 " Enabled by default for the languages defined in g:typedoc_include_filetypes
