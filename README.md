@@ -8,16 +8,6 @@ documentation. Currently, this plugin is in highly experimental state.
 sudo npm -g typedoc
 ```
 
-You also need to have this on your project tsconfig.json
-```typescript
-{
-  "typedocOptions": {
-    "entryPoints": './index.ts',
-    "out": 'docs'
-  }
-}
-```
-
 ## Documentation
 Please use <:h typedoc> on vim to read the [full documentation](https://github.com/Zeioth/vim-typedoc/blob/main/doc/typedoc.txt).
 
@@ -42,6 +32,22 @@ augroup END
 ```
 
 ## Most frecuent options users customize
+
+Enable automated typedoc.json file generation (optional)
+```
+" Clone a default typedoc.json file into the project (ENABLED BY DEFAULT)
+" Check the template here: https://github.com/Zeioth/vim-typedoc-template
+g:typedoc_auto_setup = 1
+
+" OPTIONAL: You can provide a custom typedoc.json.
+let g:typedoc_clone_config_repo = 'https://github.com/Zeioth/typedoc-vim-template.git'
+let g:typedoc_clone_destiny_dir = './typedoc'
+let g:typedoc_clone_cmd = 'git clone'
+
+" IMPORTANT: The default typedoc.json we create assumes the entry point of the program is './src/main.js'.
+"            This is the default entry point for angular projects, but if your project has a different 
+"            entry point, you will have to manually edit './typedoc.json'.
+```
 
 Enable automated doc generation on save (optional)
 ```
