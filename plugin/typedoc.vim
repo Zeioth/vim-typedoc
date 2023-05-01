@@ -70,7 +70,7 @@ let g:typedoc_cmd = get(g:, 'typedoc_cmd', 'typedoc')
 
 " typedoc - Open on browser
 let g:typedoc_browser_cmd = get(g:, 'typedoc_browser_cmd', 'xdg-open')
-let g:typedoc_browser_file = get(g:, 'typedoc_browser_file', './docs/index.html')
+let g:typedoc_browser_file = get(g:, 'typedoc_browser_file', '/docs/index.html')
 
 " typedoc - Verbose
 let g:typedoc_verbose_manual_regen = get(g:, 'typedoc_verbose_open', '1')
