@@ -254,9 +254,16 @@ g:typedoc_auto_setup
                         When set to 1, it will clone |typedoc_clone_config_repo|
                         into the project's root directory. Specifically, on the
                         subdirectory defined on |typedoc_clone_destiny_dir|.
+                        Then typedoc.json will be copied from |typedoc_clone_destiny_dir| 
+                        to the project root directory. The template repository will be 
+                        deleted afterwards.
 
-                        If a typedoc.json file exist already, it won't be
-                        overrided.
+                        If a ./typedoc.json file exist already, the template 
+                        won't be cloned and ./typedoc.json won't be overrided.
+                        So it's safe to edit ./typedoc.json.
+                        
+                        If you want to move your typedoc.json file to a non standar
+                        location, you must set |g:typedoc_auto_setup| to 0 first.
 
                         Please, note that even though |typedoc_auto_setup|
                         will setup typedoc.json for you, you are still responsable
