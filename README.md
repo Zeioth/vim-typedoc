@@ -1,5 +1,5 @@
 # vim-typedoc
-Out of the box, this plugin automatically creates typedoc.json and regenerates your typedoc
+Out of the box, this plugin automatically regenerates your typedoc
 documentation as you code.
 
 ## Dependencies
