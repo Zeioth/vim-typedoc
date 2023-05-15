@@ -1,6 +1,5 @@
 # vim-typedoc
-Out of the box, this plugin automatically regenerates your typedoc
-documentation as you code.
+This plugin automatically create typedoc.json in the project root when you open a .ts file. Also, it creates a keybindings for you to regenerate and open the documentation easily.
 
 ## Dependencies
 ```sh
